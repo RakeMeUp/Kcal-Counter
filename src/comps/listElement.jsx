@@ -22,7 +22,7 @@ export default class listElement extends Component {
                 {/* ITEM SCORE METER */}
                 <div className='relative'>
                     <Meter />
-                    <div className='absolute top-0 right-0 left-0 bottom-0 flex items-center justify-center text-3xl'>10</div>
+                    <div className='absolute top-0 right-0 left-0 bottom-0 flex items-center justify-center text-3xl'>9</div>
                 </div>
             </div>
         )
