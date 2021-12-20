@@ -25,7 +25,19 @@ body {
   stroke: var(--meter-green);
   stroke-width: 10px;
   stroke-dasharray: 220px;
-  stroke-dashoffset: 140px;
+
+  /* MAX = 88px */
+  /* MIN = 220px */
+  /* DISTANCE = 132px */
+  /* The lower we go, the higher the % goes */
+  /* 4 tier needed */
+  /* 1 STEP = 33px */
+  /* if you want 10 steps: 1 STEP = 13.2px */
+  /* step(1) = 187px */
+  /* step(2) = 154px */
+  /* step(3) = 121px */
+  /* step(4) = 88px */
+  stroke-dashoffset: 187px;
   transform: rotate(145deg);
   position: relative;
 }
