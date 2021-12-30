@@ -47,7 +47,7 @@ export default class listElement extends Component {
 
     render() {
         return (
-            <div onClick={this.handleClick} className={`h-[${this.state.heigth}] rounded-[30px] my-2 bg-white shadow-md px-5 py-4`}>
+            <div onClick={this.handleClick} className={`rounded-[30px] my-2 bg-white shadow-md px-5 py-4`}>
                 <div className='flex w-full justify-between'>
                     {/* ITEM NAME */}
                     <div className='flex flex-col'>
