@@ -36,12 +36,12 @@ export default class meter extends Component {
             /* METER */
             <div className='relative' >
                 <svg id="meter" className='h-[70px] w-[70px]' style={this.colorChanger()}>
-                    <circle cx="35" cy="35" r="30" stroke-linecap="round"/>
+                    <circle cx="35" cy="35" r="30" strokeLinecap="round"/>
                 </svg>
     
                 {/* GRAY EMPTY METER */}
                 <svg id="meter-bg" className='h-[70px] w-[70px]'>
-                    <circle cx="35" cy="35" r="30" stroke-linecap="round"/>
+                    <circle cx="35" cy="35" r="30" strokeLinecap="round"/>
                 </svg>
                 {/* METER NUMBER */}
                 <div className='absolute top-0 right-0 left-0 bottom-0 flex items-center justify-center text-3xl'>
