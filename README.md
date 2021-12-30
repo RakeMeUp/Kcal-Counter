@@ -1,4 +1,4 @@
-## [Live Site](https://fervent-swirles-43939b.netlify.app/)
+## [Live Site (Only on Mobile at the moment)](https://fervent-swirles-43939b.netlify.app/)
 
 # Design
 
