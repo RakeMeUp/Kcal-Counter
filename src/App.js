@@ -6,7 +6,16 @@ export default class App extends Component {
     return (
       <div className='px-3 mb-28'>
         <div className='w-full flex justify-center my-6'>
-          <span className='text-2xl text-paletteGray font-medium'>Food List</span>
+          <div className='relative flex justify-center w-full '>
+
+            <span className='text-2xl text-paletteGray font-medium '>Food List</span>
+
+            <div className='flex items-center justify-end absolute inset-0'>
+              <div className='flex text-sm mr-4 text-paletteBG bg-paletteGreen font-bold justify-center items-center shadow-md w-10 h-10 rounded-full'>
+                HUF
+              </div>
+            </div>
+          </div>
         </div>
         <div id="container">
         <ListElement meter={10}/>

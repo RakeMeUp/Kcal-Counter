@@ -21,7 +21,7 @@ export default class listElement extends Component {
         return this.state.listElementOpen ? "rounded-br-[80px]" : ""
     }
 
-    additionalComponent(){
+    AdditionalComponent(){
         return (
             <div className=' mt-4 relative before:absolute before:bg-paletteLightGray before:h-[1px] before:w-full before:rounded-full'>
                 <div className='pt-4 flex justify-evenly text-sm font-medium text-paletteGray'>                
@@ -71,7 +71,7 @@ export default class listElement extends Component {
                     </div>
 
                     {/* AdditionalComponent Information (displays on click) */}
-                    {this.state.listElementOpen && this.additionalComponent()} 
+                    {this.state.listElementOpen && <this.AdditionalComponent />} 
                 </div>
                 {/* Displays when element Open */}
                 {this.state.listElementOpen && 
