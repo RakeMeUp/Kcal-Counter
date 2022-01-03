@@ -12,6 +12,11 @@ export default class listElement extends Component {
         };
 
     }
+
+    handleKppModal = (e) => {
+        e.stopPropagation()
+        this.props.handleClose()
+    }
     
     handleListElementClick = () => {
         this.setState({ listElementOpen: !this.state.listElementOpen });
@@ -57,7 +62,7 @@ export default class listElement extends Component {
 
                         {/* ITEM KPP SCORE */}
                         <div className='flex flex-col'>
-                            <div className='flex'>
+                            <div onClick={this.handleKppModal} className='flex'>
                                 <span className='text-2xl '>KPP</span>
                                 <img className='ml-1' src={help} alt="help" width="14px" />
                             </div>
@@ -76,7 +81,8 @@ export default class listElement extends Component {
                 {/* Displays when element Open */}
                 {this.state.listElementOpen && 
                     <div className='z-1 bg-paletteRed absolute bottom-0 right-0 w-20 h-20 flex items-end justify-end rounded-md'>
-                        <img className='w-5 m-1' src={edit} alt="asd" />
+                        {/* invert png so its white (lazy bones) */}
+                        <img className='w-5 m-[6px] invert-[1]' src={edit} alt="asd" />
                     </div>
                 }
             </div>
