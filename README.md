@@ -2,7 +2,7 @@
 
 - Designed in **Figma**
 - Planned in **Trello**
-- Built with **REACT**, **Tailwind**
+- Built with **REACT.js**, **TailwindCSS**
 - Hosted on **Netlify**
 
 # Design
