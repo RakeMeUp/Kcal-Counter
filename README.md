@@ -1,10 +1,10 @@
-## [Live Site (Only on Mobile at the moment)](https://fervent-swirles-43939b.netlify.app/)
+## [Live Site (Only on Mobile at the moment (WIP))](https://fervent-swirles-43939b.netlify.app/)
 
 - Designed in **Figma**
 - Planned in **Trello**
-- Built with **REACT**, **TailWind**
+- Built with **REACT.js**, **TailwindCSS**
 - Hosted on **Netlify**
 
 # Design
 
-![alt](https://i.imgur.com/78oy8Wt.png)
+![alt](https://i.imgur.com/sEtcbyL.png)
