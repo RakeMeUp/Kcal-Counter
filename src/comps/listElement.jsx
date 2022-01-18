@@ -1,23 +1,15 @@
 import React, { Component } from 'react'
-import help from '../img/Help.svg'
 import Meter from '../comps/meter'
 import edit from '../img/edit.png'
-
+import Description from './description'
 export default class listElement extends Component {
-    constructor(props)
-    {
+    constructor(props){
         super(props);
         this.state = { 
             listElementOpen: false,
         };
 
     }
-
-    handleKppModal = (e) => {
-        e.stopPropagation()
-        this.props.handleClose()
-    }
-    
     handleListElementClick = () => {
         this.setState({ listElementOpen: !this.state.listElementOpen });
     }
@@ -51,7 +43,7 @@ export default class listElement extends Component {
         return (
             <div className='relative'>
                 {/* function in class so i can toggle the corner rounding when open */}
-                <div onClick={this.handleListElementClick} className={`relative z-10 rounded-[30px] ${this.cornerRounder()} my-2 bg-white shadow-md px-5 py-4`}>
+                <div onClick={this.handleListElementClick} className={`relative rounded-[30px] ${this.cornerRounder()} my-2 bg-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] px-5 py-4`}>
                     <div className='flex w-full justify-between'>
 
                         {/* ITEM NAME */}
@@ -61,10 +53,10 @@ export default class listElement extends Component {
                         </div>
 
                         {/* ITEM KPP SCORE */}
-                        <div className='flex flex-col'>
-                            <div onClick={this.handleKppModal} className='flex'>
+                        <div>
+                            <div className='flex'>
                                 <span className='text-2xl '>KPP</span>
-                                <img className='ml-1' src={help} alt="help" width="14px" />
+                                <Description />
                             </div>
                             <span className='text-lg text-paletteGray'>5.6</span>
                         </div>
@@ -77,14 +69,17 @@ export default class listElement extends Component {
 
                     {/* AdditionalComponent Information (displays on click) */}
                     {this.state.listElementOpen && <this.AdditionalComponent />} 
+
+                    {/* Displays when element Open */}
+                    {this.state.listElementOpen && 
+                    /* negative z index ensures that children div is under parent, while you dont have to
+                        set z index on parent, avoiding further collisions */
+                        <div className='bg-paletteRed -z-10 absolute bottom-0 right-0 w-20 h-20 flex items-end justify-end rounded-md'>
+                            {/* invert png so its white (lazy bones) */}
+                            <img className='w-5 m-[6px] invert-[1]' src={edit} alt="asd" />
+                        </div>
+                    }
                 </div>
-                {/* Displays when element Open */}
-                {this.state.listElementOpen && 
-                    <div className='z-1 bg-paletteRed absolute bottom-0 right-0 w-20 h-20 flex items-end justify-end rounded-md'>
-                        {/* invert png so its white (lazy bones) */}
-                        <img className='w-5 m-[6px] invert-[1]' src={edit} alt="asd" />
-                    </div>
-                }
             </div>
         )
     }
