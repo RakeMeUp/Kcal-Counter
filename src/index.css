@@ -65,4 +65,7 @@ body {
   .list-item-custom {
     @apply w-full h-10 flex border-b-[1px] border-paletteLightGray justify-center items-center;
   }
+  .figShadow {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
 }

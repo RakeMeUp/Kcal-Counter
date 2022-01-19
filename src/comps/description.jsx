@@ -10,7 +10,8 @@ export default class description extends Component {
         }
     }
 
-    handleClick=()=>{
+    handleClick=(e)=>{
+        e.stopPropagation();
         this.setState({
             modalOpen: !this.state.modalOpen,
             zIndex: "z-50"
@@ -19,7 +20,7 @@ export default class description extends Component {
 
     render() {
         return (
-            <div onClick={this.handleClick} className='bg-yellow-400 flex justify-center items-center'>
+            <div onClick={this.handleClick} className='flex justify-center items-center'>
                 <img className='ml-1' src={icon} alt="help" width="14px" />
                 {this.state.modalOpen && (
                     /* saved z index in state so other list elements wont stay on top */
