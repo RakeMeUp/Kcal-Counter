@@ -3,6 +3,94 @@ import ListElement from './comps/listElement.jsx'
 import CurrencyButton from './comps/currencyButton.jsx'
 
 export default class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      listElements: [
+        {
+          name: "Banana",
+          kpp: "7.3",
+          amount: "400g",
+          meter: 4,
+          additional: {
+              protein: "10",
+              carbs: "56",
+              fat: "42",
+          },
+        },{
+          name: "Banana",
+          kpp: "7.3",
+          amount: "400g",
+          meter: 4,
+          additional: {
+              protein: "10",
+              carbs: "56",
+              fat: "42",
+          },
+        },{
+          name: "Banana",
+          kpp: "7.3",
+          amount: "400g",
+          meter: 4,
+          additional: {
+              protein: "10",
+              carbs: "56",
+              fat: "42",
+          },
+        },{
+          name: "Banana",
+          kpp: "7.3",
+          amount: "400g",
+          meter: 4,
+          additional: {
+              protein: "10",
+              carbs: "56",
+              fat: "42",
+          },
+        },{
+          name: "Banana",
+          kpp: "7.3",
+          amount: "400g",
+          meter: 4,
+          additional: {
+              protein: "10",
+              carbs: "56",
+              fat: "42",
+          },
+        },{
+          name: "Banana",
+          kpp: "7.3",
+          amount: "400g",
+          meter: 4,
+          additional: {
+              protein: "10",
+              carbs: "56",
+              fat: "42",
+          },
+        },{
+          name: "Banana",
+          kpp: "7.3",
+          amount: "400g",
+          meter: 4,
+          additional: {
+              protein: "10",
+              carbs: "56",
+              fat: "42",
+          },
+        },{
+          name: "Banana",
+          kpp: "7.3",
+          amount: "400g",
+          meter: 4,
+          additional: {
+              protein: "10",
+              carbs: "56",
+              fat: "42",
+          },
+        },
+      ] 
+    }
+  }
 
   render() {
     return (
@@ -20,13 +108,19 @@ export default class App extends Component {
 
         {/* List elements */}
         <div id="container">
-        <ListElement meter={10}/>
-        <ListElement meter={7}/>
-        <ListElement meter={9}/>
-        <ListElement meter={4}/>
-        <ListElement meter={2}/>
+          {this.state.listElements.map((listEl)=>{
+            return <ListElement 
+                    name={listEl.name} 
+                    kpp={listEl.kpp} 
+                    amount={listEl.amount} 
+                    meter={listEl.meter} 
+                    additional={listEl.additional}
+                    key={Math.random()*1000}
+                    /> 
+          })}
         </div>
       </div>
     )
   }
 }
+

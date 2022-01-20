@@ -60,7 +60,7 @@ body {
     @apply shadow-[0px_0px_10px_10px_rgba(0,0,0,0.5)] rounded-[30px];
   }
   .modal-bg {
-    @apply bg-transparent fixed top-0 left-0 h-screen w-full flex justify-center items-center;
+    @apply bg-black bg-opacity-50 fixed top-0 left-0 h-screen w-full flex justify-center items-center;
   }
   .list-item-custom {
     @apply w-full h-10 flex border-b-[1px] border-paletteLightGray justify-center items-center;

@@ -4,7 +4,7 @@ export default class meter extends Component {
 
     num = this.props.meterNumber;
 
-    colorChanger() {
+    colorChanger=()=>{
         /* TIER 1 */
         if(this.num >= 1 && this.num <= 3 ){
             return {stroke: "var(--meter-red)",
