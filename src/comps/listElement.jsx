@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import Meter from '../comps/meter'
-import edit from '../img/edit.png'
-import Description from './description'
-import checkmark from '../img/checkmark.svg';
+import Meter from './meter.jsx'
+import Description from './description.jsx'
 import InputElement from './inputElement.jsx'
+import edit from '../img/edit.png'
+import checkmark from '../img/checkmark.svg';
 
 export default class ListElement extends Component {
     constructor(props){

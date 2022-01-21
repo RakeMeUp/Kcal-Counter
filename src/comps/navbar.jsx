@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import InputElement from './inputElement'
+import InputElement from './inputElement.jsx'
 
 import plus from '../img/plus.svg'
 import person from '../img/person.svg'
