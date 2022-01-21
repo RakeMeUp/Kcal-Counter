@@ -102,9 +102,9 @@ export default class navbar extends Component {
                                 <InputElement classes={"w-24 h-10"} type={"number"} placeholder={"E.g.:100"}/>
                             </label>
 
-                            {/* <this.MoreTag/>
+                            <this.MoreTag/>
 
-                            {this.state.additionalOpen && <this.AdditionalInformation/>} */}
+                            {/* {this.state.additionalOpen && <this.AdditionalInformation/>} */}
 
                         </form>
                 </div>
