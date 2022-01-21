@@ -5,7 +5,7 @@ import plus from '../img/plus.svg'
 import person from '../img/person.svg'
 import medal from '../img/medal.svg'
 import close from '../img/close.svg'
-import downArrow from '../img/downArrow.svg'
+/* import downArrow from '../img/downArrow.svg' */
 
 export default class navbar extends Component {
     constructor(props){
@@ -25,7 +25,7 @@ export default class navbar extends Component {
         }
     }
 
-    AdditionalInformation = () =>{
+/*     AdditionalInformation = () =>{
         return (
             <>
                 <div className='flex'>
@@ -63,7 +63,7 @@ export default class navbar extends Component {
                 </span>
             </div>
         )
-    }
+    } */
 
     AddingModal = () =>{
         return (
@@ -102,9 +102,10 @@ export default class navbar extends Component {
                                 <InputElement classes={"w-24 h-10"} type={"number"} placeholder={"E.g.:100"}/>
                             </label>
 
-                            {/* <this.MoreTag/> */}
+                            {/* <this.MoreTag/> 
 
                             {this.state.additionalOpen && <this.AdditionalInformation/>}
+                            */}
 
                         </form>
                 </div>
