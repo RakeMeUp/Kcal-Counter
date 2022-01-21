@@ -102,9 +102,9 @@ export default class navbar extends Component {
                                 <InputElement classes={"w-24 h-10"} type={"number"} placeholder={"E.g.:100"}/>
                             </label>
 
-                            <this.MoreTag/>
+                            {/* <this.MoreTag/>
 
-                            {this.state.additionalOpen && <this.AdditionalInformation/>}
+                            {this.state.additionalOpen && <this.AdditionalInformation/>} */}
 
                         </form>
                 </div>
@@ -115,7 +115,7 @@ export default class navbar extends Component {
     render() {
         return (
             <>
-            {/* {this.state.modalOpen && <this.AddingModal/> } */}
+            {this.state.modalOpen && <this.AddingModal/> }
             
             {/* NAVBAR */}
             <div className='z-40 flex justify-between w-full h-[100px] bg-white fixed bottom-0 rounded-t-[30px] drop-shadow-[0px_-2px_10px_rgba(0,0,0,0.25)]'>
