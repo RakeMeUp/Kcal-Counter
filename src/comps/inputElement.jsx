@@ -1,27 +1,3 @@
-/* import React from 'react';
-import checkmark from '../img/checkmark.svg'
-
-export default function inputElement(props) {
-        useEffect(() => {
-            document.getElementById('nameInput').focus()
-          }, []);
-
-        return(
-            <div onBlur={props.handleEditState} onClick={(e)=>{e.stopPropagation()}} className='flex relative w-28'>
-                <input placeholder='Name' id='nameInput' type="text" maxLength={"20"} className='figShadow focus:outline-none focus:border-paletteGray focus:border-[1px] bg-paletteBG rounded-full 
-                                                overflow-clip h-7 w-28 pl-4 pr-6 text-sm' />
-                {}
-                <div onClick={props.handleEditState} className='group absolute right-0 pr-2 top-0 bottom-0 flex items-center'>
-                    <button className='group-hover:bg-paletteGreen group-active:brightness-75 bg-paletteGray w-[17px] h-[17px] 
-                                        rounded-full flex items-center justify-center'>
-                        <img src={checkmark} alt="submit" />
-                    </button>
-                </div>
-            </div>
-        )
-}
- */
-
 import React, { Component } from 'react';
 
 export default class InputElement extends Component {

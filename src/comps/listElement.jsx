@@ -4,6 +4,7 @@ import edit from '../img/edit.png'
 import Description from './description'
 import checkmark from '../img/checkmark.svg';
 import InputElement from './inputElement.jsx'
+
 export default class ListElement extends Component {
     constructor(props){
         super(props);
