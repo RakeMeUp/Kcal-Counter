@@ -5,7 +5,8 @@ import plus from '../img/plus.svg'
 import person from '../img/person.svg'
 import medal from '../img/medal.svg'
 import close from '../img/close.svg'
-/* import downArrow from '../img/downArrow.svg' */
+import downArrow from '../img/downArrow.svg'
+import upArrow from '../img/upArrow.svg'
 
 export default class navbar extends Component {
     constructor(props){
@@ -13,57 +14,11 @@ export default class navbar extends Component {
         this.state = {
             modalOpen: false,
             additionalOpen: true,
-            rotateArrow: '',
         }
     }
 
-    flipArrow = () =>{
-        if(this.state.rotateArrow){
-            this.setState({rotateArrow: ''})
-        }else{
-            this.setState({rotateArrow: 'rotate-180'})
-        }
-    }
 
-/*     AdditionalInformation = () =>{
-        return (
-            <>
-                <div className='flex'>
-                    <label className='w-full flex flex-col items-center'>
-                        <span className='ml-4 text-lg text-paletteGray'>Protein(g)</span>
-                        <InputElement classes={"w-28 h-10 mb-4"} placeholder={"E.g.: 100"} type={"number"}/>
-                    </label>
 
-                    <label className='w-full flex flex-col items-center'>
-                        <span className='text-lg text-paletteGray'>Carbs(g)</span>
-                        <InputElement classes={"w-28 h-10 mb-4"} placeholder={"E.g.: 100"} type={"number"}/>
-                    </label>
-                </div>
-                <div className='flex'>
-                    <label className='w-full flex flex-col items-center'>
-                        <span className='ml-4 text-lg text-paletteGray'>Fat(g)</span>
-                        <InputElement classes={"w-28 h-10 mb-4"} placeholder={"E.g.: 100"} type={"number"}/>
-                    </label>
-
-                    <label className='w-full flex flex-col items-center mb-7'>
-                            <span className='text-lg text-paletteGray'>Salt(g)</span>
-                            <InputElement classes={"w-28 h-10"} placeholder={"E.g.: 100"} type={"number"}/>
-                    </label>
-                </div>
-            </>
-        )
-    }
-
-    MoreTag = () =>{
-        return (
-            <div onClick={()=>{this.setState({additionalOpen: !this.state.additionalOpen}); this.flipArrow()}} className='mt-9 mb-5 flex items-center'>
-                <img id="arrow" src={downArrow} alt="asd" className={`mr-2 ${this.state.rotateArrow}`} />
-                <span className='font-light text-sm text-paletteGray'>
-                    Additional Information
-                </span>
-            </div>
-        )
-    } */
 
     AddingModal = () =>{
         return (
@@ -101,11 +56,14 @@ export default class navbar extends Component {
                                 <span className='ml-4 text-lg text-paletteGray'>Kcal/100g</span>
                                 <InputElement classes={"w-24 h-10"} type={"number"} placeholder={"E.g.:100"}/>
                             </label>
-
-                            {/* <this.MoreTag/> 
-
-                            {this.state.additionalOpen && <this.AdditionalInformation/>}
-                            */}
+                            
+                            {/* Click for More */}
+                            <div onClick={()=>{this.setState({additionalOpen: !this.state.additionalOpen})}} className='mt-9 mb-5 flex items-center'>
+                                <img id="arrow" src={this.state.additionalOpen ? downArrow : upArrow} alt="asd" className="mr-2" />
+                                <span className='font-light text-sm text-paletteGray'>
+                                    Additional Information
+                                </span>
+                            </div>
 
                         </form>
                 </div>
