@@ -113,16 +113,20 @@ export default class App extends Component {
 
         {/* List elements */}
         <div id="container">
-          {this.state.listElements.map((listEl)=>{
-            return <ListElement 
-                    name={listEl.name} 
-                    kpp={listEl.kpp} 
-                    amount={listEl.amount} 
-                    meter={listEl.meter} 
-                    additional={listEl.additional}
-                    key={Math.random()*1000}
-                    /> 
-          })}
+          {
+            this.state.listElements ? this.state.listElements.map((listEl)=>{
+              return <ListElement 
+                      name={listEl.name} 
+                      kpp={listEl.kpp} 
+                      amount={listEl.amount} 
+                      meter={listEl.meter} 
+                      additional={listEl.additional}
+                      key={Math.random()*1000}
+                      /> 
+            }) : (
+                  <div>Hello</div>
+                  )
+          }
         </div>
       </div>
     )

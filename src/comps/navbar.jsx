@@ -56,7 +56,7 @@ export default class navbar extends Component {
                             
                             {/* Click for More */}
                             <div onClick={()=>{this.setState({additionalOpen: !this.state.additionalOpen})}} className='mt-9 mb-5 flex items-center'>
-                                <img id="arrow" src={this.state.additionalOpen ? downArrow : upArrow} alt="asd" className="mr-2" />
+                                <img id="arrow" src={this.state.additionalOpen ? upArrow : downArrow} alt="asd" className="mr-2" />
                                 <span className='font-light text-sm text-paletteGray'>
                                     Additional Information
                                 </span>
@@ -103,7 +103,7 @@ export default class navbar extends Component {
             {this.state.modalOpen && <this.AddingModal/> }
             
             {/* NAVBAR */}
-            <div className='z-40 flex justify-between w-full h-[100px] bg-white fixed bottom-0 rounded-t-[30px] drop-shadow-[0px_-2px_10px_rgba(0,0,0,0.25)]'>
+            <nav className='z-40 flex justify-between w-full h-[100px] bg-white fixed bottom-0 rounded-t-[30px] drop-shadow-[0px_-2px_10px_rgba(0,0,0,0.25)]'>
                 {/* Center Button */}
                 <button onClick={()=>{this.setState({modalOpen: !this.state.modalOpen})}} className='hover:brightness-75 left-0 right-0 mx-auto flex justify-center items-center w-[100px] h-[100px] bg-white border-2 border-paletteGray rounded-full absolute bottom-[25px]'>
                     <img src={plus} alt="PLUS" width="34px" />
@@ -118,7 +118,7 @@ export default class navbar extends Component {
                 <button className='flex items-center justify-center w-[100px] h-[100px] mx-6 rounded-full'>
                     <img src={person} alt="person" width="40px" />
                 </button>
-            </div>
+            </nav>
             </>
         )
     }
