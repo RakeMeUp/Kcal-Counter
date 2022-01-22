@@ -7,4 +7,4 @@
 
 # Design
 
-![alt](https://i.imgur.com/sEtcbyL.png)
+![alt](https://i.imgur.com/J8bytfU.png)
