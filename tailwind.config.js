@@ -9,6 +9,9 @@ module.exports = {
       fontFamily:{
         'poppins' : ['Poppins', 'sans-serif'],
       },
+      screens: { 
+        'keyboardClosed': { 'raw': '(min-height: 700px)' }
+       }
     },
     colors: {
       transparent: 'transparent',
