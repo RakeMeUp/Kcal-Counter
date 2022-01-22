@@ -17,8 +17,34 @@ export default class navbar extends Component {
         }
     }
 
+    AdditionalInformation = () =>{
+        return (
+            <>
+                <div className='flex'>
+                    <label className='w-full flex flex-col items-center'>
+                        <span className='ml-4 text-lg text-paletteGray'>Protein(g)</span>
+                        <InputElement classes={"w-28 h-10 mb-4"} placeholder={"E.g.: 100"} type={"number"}/>
+                    </label>
 
+                    <label className='w-full flex flex-col items-center'>
+                        <span className='text-lg text-paletteGray'>Carbs(g)</span>
+                        <InputElement classes={"w-28 h-10 mb-4"} placeholder={"E.g.: 100"} type={"number"}/>
+                    </label>
+                </div>
+                <div className='flex'>
+                    <label className='w-full flex flex-col items-center'>
+                        <span className='ml-4 text-lg text-paletteGray'>Fat(g)</span>
+                        <InputElement classes={"w-28 h-10 mb-4"} placeholder={"E.g.: 100"} type={"number"}/>
+                    </label>
 
+                    <label className='w-full flex flex-col items-center mb-7'>
+                            <span className='text-lg text-paletteGray'>Salt(g)</span>
+                            <InputElement classes={"w-28 h-10"} placeholder={"E.g.: 100"} type={"number"}/>
+                    </label>
+                </div>
+            </>
+        )
+    }
 
     AddingModal = () =>{
         return (
@@ -28,7 +54,7 @@ export default class navbar extends Component {
                         {/* HEAD */}
                         <div className='text-2xl font-medium'>Adding New Food</div>
                             {/* BUTTON */}
-                            <button className='w-10 h-10 rounded-full flex justify-center items-center active:bg-paletteLightGray'>
+                            <button onClick={()=>{this.setState({modalOpen: !this.state.modalOpen})}} className='w-10 h-10 rounded-full flex justify-center items-center active:bg-paletteLightGray'>
                                 <img src={close} alt="exit" />
                             </button>
                         </div>
@@ -64,6 +90,9 @@ export default class navbar extends Component {
                                     Additional Information
                                 </span>
                             </div>
+
+                            {this.state.additionalOpen && <this.AdditionalInformation/>}
+                            
 
                         </form>
                 </div>
