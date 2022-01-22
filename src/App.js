@@ -6,6 +6,7 @@ export default class App extends Component {
   constructor(props){
     super(props)
     this.state = {
+      currentCurrency: "HUF",
       listElements: [
         {
           name: "Banana",
@@ -92,6 +93,10 @@ export default class App extends Component {
     }
   }
 
+  handleCurrencyChange=(arg)=>{
+    this.setState({actualCurrency: arg})
+  }
+
   render() {
     return (
       <div className='px-3 mb-28'>
@@ -102,7 +107,7 @@ export default class App extends Component {
             <span className='text-2xl text-paletteGray font-medium '>Food List</span>
           </div>
           <div className='absolute inset-0 flex flex-row-reverse items-center pr-4'>
-            <CurrencyButton />
+            <CurrencyButton handleCurrencyChange={this.handleCurrencyChange} currentCurrency={this.state.actualCurrency} />
           </div>
         </div>
 

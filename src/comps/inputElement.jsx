@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 export default class InputElement extends Component {
 
+    //focus on mount so when clicked anywhere, it fires onBlur
     componentDidMount(){
         document.getElementById("inputBox").focus()
     }
