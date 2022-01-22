@@ -93,7 +93,7 @@ export default class navbar extends Component {
 
                             {this.state.additionalOpen && 
                             (
-                                <div>
+                                <>
                                     <div className='flex'>
                                         <label className='w-full flex flex-col items-center'>
                                             <span className='ml-4 text-lg text-paletteGray'>Protein(g)</span>
@@ -116,7 +116,7 @@ export default class navbar extends Component {
                                                 <InputElement classes={"w-28 h-10"} placeholder={"E.g.: 100"} type={"number"}/>
                                         </label>
                                     </div>
-                                </div>
+                                </>
                             )}
                             
 
