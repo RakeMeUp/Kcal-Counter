@@ -11,7 +11,7 @@ module.exports = {
       },
       screens: { 
         'keyboardClosed': { 'raw': '(min-height: 700px)' },
-        "keyboardOpen": {'raw': '(max-height:480px)'}
+        "keyboardOpen": {'raw': '(max-height:700px)'}
        }
     },
     colors: {
