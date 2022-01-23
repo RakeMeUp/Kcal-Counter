@@ -57,7 +57,7 @@ export default class navbar extends Component {
     AddingModal = () =>{
         return (
             <div onClick={()=>{this.setState({modalOpen: !this.state.modalOpen})}} className='modal-bg z-50'>
-                <div onClick={(e)=>{e.stopPropagation()}} className='modal-body mb-10 bg-white w-[300px]'>
+                <div onClick={(e)=>{e.stopPropagation()}} className={`modal-body bg-white w-[300px] ${this.state.additionalOpen && "keyboardOpen:h-screen overflow-scroll"}`}>
                     <div className='flex justify-between items-center pt-4 pl-5 pr-2'>
                         {/* HEAD */}
                         <div className='text-2xl font-medium'>Adding New Food</div>

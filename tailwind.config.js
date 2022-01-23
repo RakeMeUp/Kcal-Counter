@@ -10,7 +10,8 @@ module.exports = {
         'poppins' : ['Poppins', 'sans-serif'],
       },
       screens: { 
-        'keyboardClosed': { 'raw': '(min-height: 700px)' }
+        'keyboardClosed': { 'raw': '(min-height: 700px)' },
+        "keyboardOpen": {'raw': '(max-height:580px)'}
        }
     },
     colors: {
