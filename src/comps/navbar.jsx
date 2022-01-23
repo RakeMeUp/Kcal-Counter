@@ -151,7 +151,7 @@ export default class navbar extends Component {
                                                 <span className='ml-4 text-lg text-paletteGray'>Protein(g)</span>
                                                 <input type="number"
                                                         className='inputText h-10 w-28 mb-4' 
-                                                        value={this.state.proteinInput}
+                                                        value={this.state.additional.proteinInput}
                                                         onChange={(e)=>{this.setState({
                                                             additional: {
                                                                 ...this.state.additional,
@@ -166,7 +166,7 @@ export default class navbar extends Component {
                                                 <span className='text-lg text-paletteGray'>Carbs(g)</span>
                                                 <input type="number"
                                                         className='inputText h-10 w-28 mb-4' 
-                                                        value={this.state.carbsInput}
+                                                        value={this.state.additional.carbsInput}
                                                         onChange={(e)=>{this.setState({additional:{
                                                             ...this.state.additional,
                                                             carbsInput: e.target.value}})}}
@@ -181,7 +181,7 @@ export default class navbar extends Component {
                                                 <span className='ml-4 text-lg text-paletteGray'>Fat(g)</span>
                                                 <input type="number"
                                                         className='inputText h-10 w-28' 
-                                                        value={this.state.fatInput}
+                                                        value={this.state.additional.fatInput}
                                                         onChange={(e)=>{this.setState({additional:{
                                                             ...this.state.additional,
                                                             fatInput: e.target.value}})}}
@@ -195,7 +195,7 @@ export default class navbar extends Component {
                                                     <span className='text-lg text-paletteGray'>Salt(g)</span>
                                                     <input type="number"
                                                         className='inputText h-10 w-28' 
-                                                        value={this.state.saltInput}
+                                                        value={this.state.additional.saltInput}
                                                         onChange={(e)=>{this.setState({additional:{
                                                             ...this.state.additional,
                                                             saltInput: e.target.value}})}}
