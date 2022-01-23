@@ -20,6 +20,13 @@ export default class App extends Component {
     this.setState({listElements: [...this.state.listElements, item]})
   }
 
+  /* making a copy of the state, and we work on that, to avoid mutating the state */
+  nameChange=(id, text)=>{
+    let tempListElArray = [...this.state.listElements];
+    tempListElArray[id].name = text;
+    this.setState({listElements: tempListElArray})
+  }
+
 
 
   render() {
@@ -42,6 +49,7 @@ export default class App extends Component {
         <div id="container">
           {
             this.state.listElements ? this.state.listElements.map((listEl, index)=>{
+              console.log(listEl);
               return <ListElement 
                       name={listEl.name} 
                       kpp={listEl.kpp} 
@@ -49,6 +57,8 @@ export default class App extends Component {
                       meter={listEl.meter} 
                       additional={listEl.additional}
                       key={index}
+                      id={index}
+                      nameChange={this.nameChange}
                       /> 
             }) : (
                   <div>Hello</div>

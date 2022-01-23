@@ -12,10 +12,16 @@ export default class navbar extends Component {
         super(props)
         this.state = {
             modalOpen: true,
-            additionalOpen: false,
+            additionalOpen: true,
             nameInput: "",
-            kppInput: "",
             amountInput:"",
+            kcalInput: "",
+            additional: {
+                proteinInput:"",
+                carbsInput:"",
+                fatInput:"",
+                saltInput:"",
+            }
         }
     }
 
@@ -24,7 +30,13 @@ export default class navbar extends Component {
         this.props.addItem({
             name: this.state.nameInput,
             amount: this.state.amountInput,
-            kpp: this.state.kppInput,
+            kcal: this.state.kcalInput,
+            additional: {
+                protein: this.state.additional.proteinInput,
+                carbs: this.state.additional.carbsInput,
+                fat: this.state.additional.fatInput,
+                salt: this.state.additional.saltInput,
+            }
         })
     }
 
@@ -77,8 +89,8 @@ export default class navbar extends Component {
                                     <span className='ml-4 text-lg text-paletteGray'>Kcal/100g</span>
                                     <input type="number"
                                             className='inputText h-10 w-32' 
-                                            value={this.state.kppInput}
-                                            onChange={(e)=>{this.setState({kppInput: e.target.value})}}/>
+                                            value={this.state.kcalInput}
+                                            onChange={(e)=>{this.setState({kcalInput: e.target.value})}}/>
                                 </label>
                                 <button type="submit" className='bg-paletteGreen rounded-full w-20 h-20'>asd</button>
                             </div>
@@ -101,14 +113,25 @@ export default class navbar extends Component {
                                         {/* PROTEIN */}
                                         <label className='w-full flex flex-col items-center'>
                                             <span className='ml-4 text-lg text-paletteGray'>Protein(g)</span>
-                                            {/* INPUT */}
+                                            <input type="number"
+                                                    className='inputText h-10 w-32' 
+                                                    value={this.state.proteinInput}
+                                                    onChange={(e)=>{this.setState({
+                                                        additional: {
+                                                            ...this.state.additional,
+                                                            proteinInput: e.target.value}})}}/>
 
                                         </label>
 
                                         {/* CARBS */}
                                         <label className='w-full flex flex-col items-center'>
                                             <span className='text-lg text-paletteGray'>Carbs(g)</span>
-                                            {/* INPUT */}
+                                            <input type="number"
+                                                    className='inputText h-10 w-32' 
+                                                    value={this.state.carbsInput}
+                                                    onChange={(e)=>{this.setState({additional:{
+                                                        ...this.state.additional,
+                                                        carbsInput: e.target.value}})}}/>
 
                                         </label>
                                     </div>
@@ -116,14 +139,24 @@ export default class navbar extends Component {
                                         {/* FAT */}
                                         <label className='w-full flex flex-col items-center'>
                                             <span className='ml-4 text-lg text-paletteGray'>Fat(g)</span>
-                                            {/* INPUT */}
+                                            <input type="number"
+                                                    className='inputText h-10 w-32' 
+                                                    value={this.state.fatInput}
+                                                    onChange={(e)=>{this.setState({additional:{
+                                                        ...this.state.additional,
+                                                        fatInput: e.target.value}})}}/>
 
                                         </label>
                             
                                         {/* SALT */}
                                         <label className='w-full flex flex-col items-center mb-7'>
                                                 <span className='text-lg text-paletteGray'>Salt(g)</span>
-                                                {/* INPUT */}
+                                                <input type="number"
+                                                    className='inputText h-10 w-32' 
+                                                    value={this.state.saltInput}
+                                                    onChange={(e)=>{this.setState({additional:{
+                                                        ...this.state.additional,
+                                                        saltInput: e.target.value}})}}/>
 
                                         </label>
                                     </div>

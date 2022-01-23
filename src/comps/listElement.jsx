@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import Meter from './meter.jsx'
 import Description from './description.jsx'
 import edit from '../img/edit.png'
+import checkmark from '../img/checkmark.svg'
 export default class ListElement extends Component {
     constructor(props){
         super(props);
         this.state = { 
             listElementOpen: false,
             editNameOpen: false,
+            nameChangeText: "",
         };
 
     }
@@ -44,26 +46,53 @@ export default class ListElement extends Component {
         )
     }
 
-    updateInputState=(stateName, stateValue)=>{
-        this.setState({
-                [stateName]: stateValue
-        })
-    }
-
     NameField = () => {
+
         return(
             <div className='relative text-2xl select-text'>
                 <div className='overflow-clip'>
                     {this.props.name}
                 </div>
                 {this.state.listElementOpen && 
-                (<div onClick={(e)=>{e.stopPropagation(); this.handleEditState()}} className='absolute top-0 -right-8 p-2' >
-                    <img src={edit} alt="edit" width={"14px"} />
-                </div>) }
+                    (<div onClick={(e)=>{e.stopPropagation(); this.handleEditState()}} className='absolute top-0 -right-8 p-2' >
+                        <img src={edit} alt="edit" width={"14px"} height={"14px"} />
+                    </div>)
+                }
                 
             </div>
         )
     }
+
+    NameChangeField = () =>{
+        const handleSubmit=(e)=>{
+            e.preventDefault();
+            this.props.nameChange(this.props.id, this.state.nameChangeText);
+            this.setState({nameChangeText: ""})
+            this.handleEditState();
+            
+        }
+
+        const handleChange=(e)=>{
+            this.setState({nameChangeText: e.target.value})
+        }
+
+        return(
+            <form onSubmit={handleSubmit} onClick={(e)=>{e.stopPropagation()}} className='flex w-full relative'>
+                <label>
+                    <input type="text" 
+                            className='inputText h-8 w-full'
+                            value={this.state.nameChangeText}
+                            onChange={handleChange} />
+                    <div className='absolute right-2 top-0 bottom-0 flex items-center justify-center'>
+                        <button type="submit" className='bg-paletteGreen p-1 rounded-full'>
+                            <img src={checkmark} alt="ok" width={"14px"} />
+                        </button>
+                    </div>
+                </label>
+            </form>
+        )
+    }
+
 
     render() {
         return (
@@ -76,7 +105,7 @@ export default class ListElement extends Component {
 
                         {/* ITEM NAME */}
                         <div className='flex flex-col max-w-[33%]'>
-                            <this.NameField/>
+                            {this.state.editNameOpen ? <this.NameChangeField/> : <this.NameField/>}
                             <span  className='text-lg text-paletteGray'>{this.props.amount}</span>
                         </div>
 
