@@ -16,6 +16,7 @@ export default class navbar extends Component {
             nameInput: "",
             amountInput:"",
             kcalInput: "",
+            amountType: "g",
             additional: {
                 proteinInput:"",
                 carbsInput:"",
@@ -31,11 +32,24 @@ export default class navbar extends Component {
             name: this.state.nameInput,
             amount: this.state.amountInput,
             kcal: this.state.kcalInput,
+            amountType: this.state.amountType,
             additional: {
                 protein: this.state.additional.proteinInput,
                 carbs: this.state.additional.carbsInput,
                 fat: this.state.additional.fatInput,
                 salt: this.state.additional.saltInput,
+            }
+        });
+        this.setState({
+            nameInput: "",
+            amountInput:"",
+            kcalInput: "",
+            amountType: "g",
+            additional: {
+                proteinInput:"",
+                carbsInput:"",
+                fatInput:"",
+                saltInput:"",
             }
         })
     }
@@ -43,7 +57,7 @@ export default class navbar extends Component {
     AddingModal = () =>{
         return (
             <div onClick={()=>{this.setState({modalOpen: !this.state.modalOpen})}} className='modal-bg z-50'>
-                <div onClick={(e)=>{e.stopPropagation()}} className='modal-body bg-white w-[300px]'>
+                <div onClick={(e)=>{e.stopPropagation()}} className='modal-body mb-10 bg-white w-[300px]'>
                     <div className='flex justify-between items-center pt-4 pl-5 pr-2'>
                         {/* HEAD */}
                         <div className='text-2xl font-medium'>Adding New Food</div>
@@ -58,11 +72,12 @@ export default class navbar extends Component {
 
                             {/* NAME OF FOOD */}
                             <label className='flex flex-col mb-5'>
-                                <span className='ml-4 text-lg text-paletteGray'>Name of Food</span>
+                                <span className='ml-4 mt-2 text-lg text-paletteGray'>Name of Food</span>
                                 <input type="text"
                                     className='inputText h-10'
                                     value={this.state.nameInput}
                                     onChange={(e)=>{this.setState({nameInput: e.target.value})}}
+                                    placeholder='E.g: Banana'
                                     />
                             </label>
 
@@ -70,29 +85,42 @@ export default class navbar extends Component {
                             <label className='flex flex-col mb-5'>
                                 <span className='ml-4 text-lg text-paletteGray'>Amount</span>
                                 <div className='flex'>
-                                <input type="number"
-                                        className='inputText h-10 w-32' 
-                                        value={this.state.amountInput}
-                                        onChange={(e)=>{this.setState({amountInput: e.target.value})}}/>
-
-                                        
-                                    <div className='flex'>
-                                        <div className='text-lg font-light text-paletteGray bg-paletteBG w-10 h-10 flex items-center justify-center rounded-l-full figShadow'>g</div>
-                                        <div className='text-lg font-light text-paletteGray bg-indigo-400 w-10 h-10 flex items-center justify-center rounded-r-full figShadow'>kg</div>
+                                    <input type="number"
+                                            className='inputText h-10 w-36' 
+                                            value={this.state.amountInput}
+                                            onChange={(e)=>{this.setState({amountInput: e.target.value})}}
+                                            placeholder="E.g: 100"
+                                    />
+                                    <div className='flex ml-3'>
+                                        <div onClick={()=>{this.setState({amountType: "g"})}} 
+                                            className={`text-lg ${this.state.amountType === "g" ? "bg-indigo-400 text-white" : "bg-paletteBG font-light text-paletteGray"} 
+                                                        w-10 h-10 flex items-center justify-center rounded-l-full figShadow`}>
+                                            g
+                                        </div>
+                                        <div onClick={()=>{this.setState({amountType: "kg"})}} 
+                                            className={`text-lg ${this.state.amountType === "kg" ? "bg-indigo-400 text-white" : "bg-paletteBG font-light text-paletteGray"} 
+                                                        w-10 h-10 flex items-center justify-center rounded-r-full figShadow`}>
+                                            kg
+                                        </div>
                                     </div>
                                 </div>
                             </label>
 
-                            <div className='flex justify-between items-center'>
+                            <div className='flex items-center'>
                                 {/* KCAL/100g */}
                                 <label className='flex flex-col'>
                                     <span className='ml-4 text-lg text-paletteGray'>Kcal/100g</span>
                                     <input type="number"
-                                            className='inputText h-10 w-32' 
+                                            className='inputText h-10 w-28' 
                                             value={this.state.kcalInput}
-                                            onChange={(e)=>{this.setState({kcalInput: e.target.value})}}/>
+                                            onChange={(e)=>{this.setState({kcalInput: e.target.value})}}
+                                            placeholder="E.g: 100"
+                                            />
                                 </label>
-                                <button type="submit" className='bg-paletteGreen rounded-full w-20 h-20'>asd</button>
+                                <button type="submit" 
+                                        className='bg-paletteGreen figShadowBig 
+                                        rounded-full ml-11 w-20 h-20 text-2xl 
+                                        font-medium text-white active:shadow-none active:brightness-75'>ADD</button>
                             </div>
 
 
@@ -114,12 +142,14 @@ export default class navbar extends Component {
                                         <label className='w-full flex flex-col items-center'>
                                             <span className='ml-4 text-lg text-paletteGray'>Protein(g)</span>
                                             <input type="number"
-                                                    className='inputText h-10 w-32' 
+                                                    className='inputText h-10 w-28 mb-4' 
                                                     value={this.state.proteinInput}
                                                     onChange={(e)=>{this.setState({
                                                         additional: {
                                                             ...this.state.additional,
-                                                            proteinInput: e.target.value}})}}/>
+                                                            proteinInput: e.target.value}})}}
+                                                            placeholder="E.g: 100"
+                                                            />
 
                                         </label>
 
@@ -127,11 +157,13 @@ export default class navbar extends Component {
                                         <label className='w-full flex flex-col items-center'>
                                             <span className='text-lg text-paletteGray'>Carbs(g)</span>
                                             <input type="number"
-                                                    className='inputText h-10 w-32' 
+                                                    className='inputText h-10 w-28 mb-4' 
                                                     value={this.state.carbsInput}
                                                     onChange={(e)=>{this.setState({additional:{
                                                         ...this.state.additional,
-                                                        carbsInput: e.target.value}})}}/>
+                                                        carbsInput: e.target.value}})}}
+                                                        placeholder="E.g: 100"
+                                                        />
 
                                         </label>
                                     </div>
@@ -140,11 +172,13 @@ export default class navbar extends Component {
                                         <label className='w-full flex flex-col items-center'>
                                             <span className='ml-4 text-lg text-paletteGray'>Fat(g)</span>
                                             <input type="number"
-                                                    className='inputText h-10 w-32' 
+                                                    className='inputText h-10 w-28' 
                                                     value={this.state.fatInput}
                                                     onChange={(e)=>{this.setState({additional:{
                                                         ...this.state.additional,
-                                                        fatInput: e.target.value}})}}/>
+                                                        fatInput: e.target.value}})}}
+                                                        placeholder="E.g: 100"
+                                                        />
 
                                         </label>
                             
@@ -152,11 +186,13 @@ export default class navbar extends Component {
                                         <label className='w-full flex flex-col items-center mb-7'>
                                                 <span className='text-lg text-paletteGray'>Salt(g)</span>
                                                 <input type="number"
-                                                    className='inputText h-10 w-32' 
+                                                    className='inputText h-10 w-28' 
                                                     value={this.state.saltInput}
                                                     onChange={(e)=>{this.setState({additional:{
                                                         ...this.state.additional,
-                                                        saltInput: e.target.value}})}}/>
+                                                        saltInput: e.target.value}})}}
+                                                        placeholder="E.g: 100"
+                                                        />
 
                                         </label>
                                     </div>
