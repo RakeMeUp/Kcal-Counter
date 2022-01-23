@@ -11,8 +11,8 @@ export default class navbar extends Component {
     constructor(props){
         super(props)
         this.state = {
-            modalOpen: true,
-            additionalOpen: true,
+            modalOpen: false,
+            additionalOpen: false,
             nameInput: "",
             amountInput:"",
             kcalInput: "",

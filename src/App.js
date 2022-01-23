@@ -26,46 +26,57 @@ export default class App extends Component {
     tempListElArray[id].name = text;
     this.setState({listElements: tempListElArray})
   }
-
+  
+  EmptyList =()=>{
+    return (
+      <div className='fixed inset-0 flex items-center justify-center'>
+        <div className='w-60 text-center'>
+          <span className='text-2xl font-bold text-gray-400 '>
+            Add a new Item with the Plus Button below.
+          </span>
+        </div>
+      </div>
+    )
+  }
 
 
   render() {
     return (
       <>
-      <Navbar addItem={this.addItem}/>
-      <div className='px-3 mb-28'>
+        <Navbar addItem={this.addItem}/>
 
-        {/* Title Bar */}
-        <div className='relative w-full flex justify-center my-6'>
-          <div className='flex justify-center w-full'>
-            <span className='text-2xl text-paletteGray font-medium '>Food List</span>
-          </div>
-          <div className='absolute inset-0 flex flex-row-reverse items-center pr-4'>
-            <CurrencyButton handleCurrencyChange={this.handleCurrencyChange} currentCurrency={this.state.actualCurrency} />
-          </div>
-        </div>
+          {/* Title Bar */}
+          <header className='relative w-full flex justify-center py-6'>
+            <div className='flex justify-center w-full'>
+              <span className='text-2xl text-paletteGray font-medium '>Food List</span>
+            </div>
+            <div className='absolute inset-0 flex flex-row-reverse items-center pr-4 z-50'>
+              <CurrencyButton handleCurrencyChange={this.handleCurrencyChange} currentCurrency={this.state.actualCurrency} />
+            </div>
+          </header>
 
-        {/* List elements */}
-        <div id="container">
-          {
-            this.state.listElements ? this.state.listElements.map((listEl, index)=>{
-              console.log(listEl);
-              return <ListElement 
-                      name={listEl.name} 
-                      kpp={listEl.kpp} 
-                      amount={listEl.amount} 
-                      meter={listEl.meter} 
-                      additional={listEl.additional}
-                      key={index}
-                      id={index}
-                      nameChange={this.nameChange}
-                      /> 
-            }) : (
-                  <div>Hello</div>
-                  )
-          }
-        </div>
-      </div>
+          {/* List elements */}
+          <main id="container">
+            <ol>
+              {
+                this.state.listElements.length ? this.state.listElements.map((listEl, index)=>{
+                  console.log(listEl);
+                  return <ListElement 
+                          name={listEl.name} 
+                          kpp={listEl.kpp} 
+                          amount={listEl.amount} 
+                          meter={listEl.meter} 
+                          additional={listEl.additional}
+                          key={index}
+                          id={index}
+                          nameChange={this.nameChange}
+                          /> 
+                }) : (
+                      <this.EmptyList/>
+                      )
+              }
+            </ol>
+          </main>
       </>
     )
   }

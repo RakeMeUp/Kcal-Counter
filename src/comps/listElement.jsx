@@ -96,7 +96,7 @@ export default class ListElement extends Component {
 
     render() {
         return (
-            <div className='relative'>
+            <li className='relative list-none'>
                 {/* function in class so i can toggle the corner rounding when open */}
                 <div onClick={this.handleListElementClick} 
                     className={`relative rounded-[30px] ${this.cornerRounder()} 
@@ -138,7 +138,7 @@ export default class ListElement extends Component {
                         </div>
                     }
                 </div>
-            </div>
+            </li>
         )
     }
 }
