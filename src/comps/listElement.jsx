@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import Meter from './meter.jsx'
 import Description from './description.jsx'
-import InputElement from './inputElement.jsx'
 import edit from '../img/edit.png'
-import checkmark from '../img/checkmark.svg';
-
 export default class ListElement extends Component {
     constructor(props){
         super(props);
@@ -47,6 +44,11 @@ export default class ListElement extends Component {
         )
     }
 
+    updateInputState=(stateName, stateValue)=>{
+        this.setState({
+                [stateName]: stateValue
+        })
+    }
 
     NameField = () => {
         return(
@@ -63,17 +65,6 @@ export default class ListElement extends Component {
         )
     }
 
-    InputField = (props) => {
-        return (
-                    <div onClick={(e)=>{e.stopPropagation()}} className='flex items-center'>
-                        <InputElement handleBlur={props.handleClick} classes="w-28 h-8"/>
-                        <button onClick={props.handleClick} className='bg-paletteGray active:bg-paletteGreen -ml-7 flex justify-center items-center rounded-full p-1'>
-                            <img src={checkmark} alt="Send"/>
-                        </button>
-                    </div>
-        )
-    }
-
     render() {
         return (
             <div className='relative'>
@@ -85,7 +76,7 @@ export default class ListElement extends Component {
 
                         {/* ITEM NAME */}
                         <div className='flex flex-col max-w-[33%]'>
-                            {this.state.editNameOpen ? <this.InputField handleClick={this.handleEditState}/> : <this.NameField/>}
+                            <this.NameField/>
                             <span  className='text-lg text-paletteGray'>{this.props.amount}</span>
                         </div>
 

@@ -1,95 +1,14 @@
 import React, { Component } from 'react'
 import ListElement from './comps/listElement.jsx'
 import CurrencyButton from './comps/currencyButton.jsx'
+import Navbar from './comps/navbar'
 
 export default class App extends Component {
   constructor(props){
     super(props)
     this.state = {
       currentCurrency: "HUF",
-      listElements: [
-        {
-          name: "Banana",
-          kpp: "7.3",
-          amount: "400g",
-          meter: 4,
-          additional: {
-              protein: "10",
-              carbs: "56",
-              fat: "42",
-          },
-        },{
-          name: "Banana",
-          kpp: "7.3",
-          amount: "400g",
-          meter: 4,
-          additional: {
-              protein: "10",
-              carbs: "56",
-              fat: "42",
-          },
-        },{
-          name: "Banana",
-          kpp: "7.3",
-          amount: "400g",
-          meter: 4,
-          additional: {
-              protein: "10",
-              carbs: "56",
-              fat: "42",
-          },
-        },{
-          name: "Banana",
-          kpp: "7.3",
-          amount: "400g",
-          meter: 4,
-          additional: {
-              protein: "10",
-              carbs: "56",
-              fat: "42",
-          },
-        },{
-          name: "Banana",
-          kpp: "7.3",
-          amount: "400g",
-          meter: 4,
-          additional: {
-              protein: "10",
-              carbs: "56",
-              fat: "42",
-          },
-        },{
-          name: "Banana",
-          kpp: "7.3",
-          amount: "400g",
-          meter: 4,
-          additional: {
-              protein: "10",
-              carbs: "56",
-              fat: "42",
-          },
-        },{
-          name: "Banana",
-          kpp: "7.3",
-          amount: "400g",
-          meter: 4,
-          additional: {
-              protein: "10",
-              carbs: "56",
-              fat: "42",
-          },
-        },{
-          name: "Banana",
-          kpp: "7.3",
-          amount: "400g",
-          meter: 4,
-          additional: {
-              protein: "10",
-              carbs: "56",
-              fat: "42",
-          },
-        },
-      ] 
+      listElements: [] 
     }
   }
 
@@ -97,8 +16,16 @@ export default class App extends Component {
     this.setState({actualCurrency: arg})
   }
 
+  addItem=(item)=>{
+    this.setState({listElements: [...this.state.listElements, item]})
+  }
+
+
+
   render() {
     return (
+      <>
+      <Navbar addItem={this.addItem}/>
       <div className='px-3 mb-28'>
 
         {/* Title Bar */}
@@ -114,14 +41,14 @@ export default class App extends Component {
         {/* List elements */}
         <div id="container">
           {
-            this.state.listElements ? this.state.listElements.map((listEl)=>{
+            this.state.listElements ? this.state.listElements.map((listEl, index)=>{
               return <ListElement 
                       name={listEl.name} 
                       kpp={listEl.kpp} 
                       amount={listEl.amount} 
                       meter={listEl.meter} 
                       additional={listEl.additional}
-                      key={Math.random()*1000}
+                      key={index}
                       /> 
             }) : (
                   <div>Hello</div>
@@ -129,6 +56,7 @@ export default class App extends Component {
           }
         </div>
       </div>
+      </>
     )
   }
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import InputElement from './inputElement.jsx'
 
 import plus from '../img/plus.svg'
 import person from '../img/person.svg'
@@ -12,9 +11,21 @@ export default class navbar extends Component {
     constructor(props){
         super(props)
         this.state = {
-            modalOpen: false,
+            modalOpen: true,
             additionalOpen: false,
+            nameInput: "",
+            kppInput: "",
+            amountInput:"",
         }
+    }
+
+    handleSubmit=(e)=>{
+        e.preventDefault();
+        this.props.addItem({
+            name: this.state.nameInput,
+            amount: this.state.amountInput,
+            kpp: this.state.kppInput,
+        })
     }
 
     AddingModal = () =>{
@@ -24,24 +35,35 @@ export default class navbar extends Component {
                     <div className='flex justify-between items-center pt-4 pl-5 pr-2'>
                         {/* HEAD */}
                         <div className='text-2xl font-medium'>Adding New Food</div>
-                            {/* BUTTON */}
+                            {/* CLOSE BUTTON */}
                             <button onClick={()=>{this.setState({modalOpen: !this.state.modalOpen})}} className='w-10 h-10 rounded-full flex justify-center items-center active:bg-paletteLightGray'>
                                 <img src={close} alt="exit" />
                             </button>
                         </div>
 
                         {/* BODY */}
-                        <form className='px-5'>
+                        <form onSubmit={this.handleSubmit} className='px-5'>
 
+                            {/* NAME OF FOOD */}
                             <label className='flex flex-col mb-5'>
                                 <span className='ml-4 text-lg text-paletteGray'>Name of Food</span>
-                                <InputElement/>
+                                <input type="text"
+                                    className='inputText h-10'
+                                    value={this.state.nameInput}
+                                    onChange={(e)=>{this.setState({nameInput: e.target.value})}}
+                                    />
                             </label>
 
+                            {/* AMOUNT */}
                             <label className='flex flex-col mb-5'>
                                 <span className='ml-4 text-lg text-paletteGray'>Amount</span>
                                 <div className='flex'>
-                                    <InputElement classes={"w-32 mr-5"} type={"number"} placeholder={"E.g.:100"}/>
+                                <input type="number"
+                                        className='inputText h-10 w-32' 
+                                        value={this.state.amountInput}
+                                        onChange={(e)=>{this.setState({amountInput: e.target.value})}}/>
+
+                                        
                                     <div className='flex'>
                                         <div className='text-lg font-light text-paletteGray bg-paletteBG w-10 h-10 flex items-center justify-center rounded-l-full figShadow'>g</div>
                                         <div className='text-lg font-light text-paletteGray bg-indigo-400 w-10 h-10 flex items-center justify-center rounded-r-full figShadow'>kg</div>
@@ -49,10 +71,20 @@ export default class navbar extends Component {
                                 </div>
                             </label>
 
-                            <label className='flex flex-col'>
-                                <span className='ml-4 text-lg text-paletteGray'>Kcal/100g</span>
-                                <InputElement classes={"w-24 h-10"} type={"number"} placeholder={"E.g.:100"}/>
-                            </label>
+                            <div className='flex justify-between items-center'>
+                                {/* KCAL/100g */}
+                                <label className='flex flex-col'>
+                                    <span className='ml-4 text-lg text-paletteGray'>Kcal/100g</span>
+                                    <input type="number"
+                                            className='inputText h-10 w-32' 
+                                            value={this.state.kppInput}
+                                            onChange={(e)=>{this.setState({kppInput: e.target.value})}}/>
+                                </label>
+                                <button type="submit" className='bg-paletteGreen rounded-full w-20 h-20'>asd</button>
+                            </div>
+
+
+                            
                             
                             {/* Click for More */}
                             <div onClick={()=>{this.setState({additionalOpen: !this.state.additionalOpen})}} className='mt-9 mb-5 flex items-center'>
@@ -66,25 +98,33 @@ export default class navbar extends Component {
                             (
                                 <>
                                     <div className='flex'>
+                                        {/* PROTEIN */}
                                         <label className='w-full flex flex-col items-center'>
                                             <span className='ml-4 text-lg text-paletteGray'>Protein(g)</span>
-                                            <InputElement classes={"w-28 h-10 mb-4"} placeholder={"E.g.: 100"} type={"number"}/>
+                                            {/* INPUT */}
+
                                         </label>
 
+                                        {/* CARBS */}
                                         <label className='w-full flex flex-col items-center'>
                                             <span className='text-lg text-paletteGray'>Carbs(g)</span>
-                                            <InputElement classes={"w-28 h-10 mb-4"} placeholder={"E.g.: 100"} type={"number"}/>
+                                            {/* INPUT */}
+
                                         </label>
                                     </div>
                                     <div className='flex'>
+                                        {/* FAT */}
                                         <label className='w-full flex flex-col items-center'>
                                             <span className='ml-4 text-lg text-paletteGray'>Fat(g)</span>
-                                            <InputElement classes={"w-28 h-10 mb-4"} placeholder={"E.g.: 100"} type={"number"}/>
-                                        </label>
+                                            {/* INPUT */}
 
+                                        </label>
+                            
+                                        {/* SALT */}
                                         <label className='w-full flex flex-col items-center mb-7'>
                                                 <span className='text-lg text-paletteGray'>Salt(g)</span>
-                                                <InputElement classes={"w-28 h-10"} placeholder={"E.g.: 100"} type={"number"}/>
+                                                {/* INPUT */}
+
                                         </label>
                                     </div>
                                 </>
@@ -105,7 +145,7 @@ export default class navbar extends Component {
                 {/* NAVBAR */}
                 <nav className='z-40 hidden keyboardClosed:flex justify-between w-full h-[100px] bg-white fixed bottom-0 rounded-t-[30px] drop-shadow-[0px_-2px_10px_rgba(0,0,0,0.25)]'>
                     {/* Center Button */}
-                    <button onClick={()=>{this.setState({modalOpen: !this.state.modalOpen})}} className='hover:brightness-75 left-0 right-0 mx-auto flex justify-center items-center w-[100px] h-[100px] bg-white border-2 border-paletteGray rounded-full absolute bottom-[25px]'>
+                    <button onClick={()=>{this.setState({modalOpen: !this.state.modalOpen})}} className='hover:brightness-90 left-0 right-0 mx-auto flex justify-center items-center w-[100px] h-[100px] bg-white figShadow rounded-full absolute bottom-[25px]'>
                         <img src={plus} alt="PLUS" width="34px" />
                     </button>
 

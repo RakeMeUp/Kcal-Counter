@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 
 export default class InputElement extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            inputText: "",
+        }
+    }
 
     //focus on mount so when clicked anywhere, it fires onBlur
     componentDidMount(){
-        document.getElementById("inputBox").focus()
+        document.querySelector("#inputBox").focus()
     }
 
     render() {
@@ -15,6 +21,9 @@ export default class InputElement extends Component {
                     maxLength={this.props.maxL}
                     id='inputBox'
                     onBlur={this.props.handleBlur}
+                    value={this.state.inputText}
+                    name={this.props.name}
+                    onChange={(e)=>{ this.props.updateState(this.props.name, e.target.value); this.setState({inputText: e.target.value}) }}
                     />
     )
   }
