@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import Meter from './meter.jsx'
 import Description from './description.jsx'
 import edit from '../img/edit.png'
@@ -64,6 +64,11 @@ export default class ListElement extends Component {
     }
 
     NameChangeField = () =>{
+        
+        useEffect(()=>{
+            document.querySelector("#nameChangeInput").focus()
+        },[])
+
         const handleSubmit=(e)=>{
             e.preventDefault();
             this.props.nameChange(this.props.id, this.state.nameChangeText);
@@ -80,6 +85,7 @@ export default class ListElement extends Component {
             <form onSubmit={handleSubmit} onClick={(e)=>{e.stopPropagation()}} className='flex w-full relative'>
                 <label>
                     <input type="text" 
+                            id='nameChangeInput'
                             className='inputText h-8 w-full'
                             value={this.state.nameChangeText}
                             onChange={handleChange} />
