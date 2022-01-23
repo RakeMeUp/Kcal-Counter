@@ -82,4 +82,13 @@ main {
   .inputText {
     @apply rounded-full px-5 bg-paletteBG figShadow text-sm focus:outline-none focus:border-[1px] focus:border-black;
   }
+
+  .gradientUp {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.32186641746542366) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
 }
