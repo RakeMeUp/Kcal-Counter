@@ -29,7 +29,7 @@ export default class App extends Component {
   
   EmptyList =()=>{
     return (
-      <div className='fixed inset-0 flex items-center justify-center'>
+      <div className='fixed mt-20 inset-0 flex items-center justify-center'>
         <div className='w-60 text-center'>
           <span className='text-2xl font-bold text-gray-400 '>
             Add a new Item with the Plus Button below.
@@ -50,7 +50,7 @@ export default class App extends Component {
             <div className='flex justify-center w-full'>
               <span className='text-2xl text-paletteGray font-medium '>Food List</span>
             </div>
-            <div className='absolute inset-0 flex flex-row-reverse items-center pr-4 z-50'>
+            <div className='absolute inset-0 flex flex-row-reverse items-center pr-4'>
               <CurrencyButton handleCurrencyChange={this.handleCurrencyChange} currentCurrency={this.state.actualCurrency} />
             </div>
           </header>
