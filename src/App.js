@@ -30,7 +30,7 @@ export default class App extends Component {
   EmptyList =()=>{
     return (
       <div className='fixed mt-20 inset-0 flex items-center justify-center'>
-        <div className='w-60 text-center'>
+        <div className='w-60 text-center mb-40'>
           <span className='text-2xl font-bold text-gray-400 '>
             Add a new Item with the Plus Button below.
           </span>
