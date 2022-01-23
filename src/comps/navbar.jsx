@@ -78,6 +78,7 @@ export default class navbar extends Component {
                                     value={this.state.nameInput}
                                     onChange={(e)=>{this.setState({nameInput: e.target.value})}}
                                     placeholder='E.g: Banana'
+                                    required
                                     />
                             </label>
 
@@ -115,6 +116,7 @@ export default class navbar extends Component {
                                             value={this.state.kcalInput}
                                             onChange={(e)=>{this.setState({kcalInput: e.target.value})}}
                                             placeholder="E.g: 100"
+                                            required
                                             />
                                 </label>
                                 <button type="submit" 
