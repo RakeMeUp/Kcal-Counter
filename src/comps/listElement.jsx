@@ -102,7 +102,7 @@ export default class ListElement extends Component {
 
     render() {
         return (
-            <li className='relative list-none'>
+            <li className='relative list-none md:max-w-xl md:w-[500px] w-full'>
                 {/* function in class so i can toggle the corner rounding when open */}
                 <div onClick={this.handleListElementClick} 
                     className={`relative rounded-[30px] ${this.cornerRounder()} 
@@ -125,9 +125,7 @@ export default class ListElement extends Component {
                         </div>
 
                         {/* ITEM SCORE METER */}
-                        <div className='relative'>
-                            <Meter meterNumber={this.props.meter} />
-                        </div>
+                        <Meter meterNumber={this.props.meter} />
                     </div>
 
                     {/* AdditionalComponent Information (displays on click) */}

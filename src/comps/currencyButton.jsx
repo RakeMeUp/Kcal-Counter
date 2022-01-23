@@ -22,14 +22,14 @@ export default class currencyButton extends Component {
 
     render() {
         return (
-            <div onClick={()=>{this.setState({modalOpen: !this.state.modalOpen})}} >
-                <div className='figShadow bg-paletteGreen w-10 h-10 
+            <>
+                <div onClick={()=>{this.setState({modalOpen: !this.state.modalOpen})}}  className='figShadow bg-paletteGreen w-10 h-10 
                 rounded-full text-sm font-bold text-paletteBG flex items-center justify-center'>
                     <span>{this.props.currentCurrency ? this.props.currentCurrency : "HUF"}</span>
                 </div>
                 
                 {this.state.modalOpen && (
-                    <div className='modal-bg z-50'>
+                    <div onClick={()=>{this.setState({modalOpen: !this.state.modalOpen})}} className='modal-bg z-50'>
                         <div onClick={(e)=>{e.stopPropagation()}} 
                         className='bg-paletteLightGray flex flex-col items-center modal-body w-56 pb-10'>
                             <span className='text-2xl font-medium'>Currency</span>
@@ -54,7 +54,7 @@ export default class currencyButton extends Component {
                         </div>
                     </div>
                 )}
-            </div>
+            </>
         )
     }
 }

@@ -42,8 +42,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <>
-        <Navbar addItem={this.addItem}/>
+      <div className='flex flex-col'>
 
           {/* Title Bar */}
           <header className='relative w-full flex justify-center py-6'>
@@ -56,11 +55,10 @@ export default class App extends Component {
           </header>
 
           {/* List elements */}
-          <main id="container">
+          <main id="container" className='flex flex-col md:items-center'>
             <ol>
               {
                 this.state.listElements.length ? this.state.listElements.map((listEl, index)=>{
-                  console.log(listEl);
                   return <ListElement 
                           name={listEl.name} 
                           kpp={listEl.kpp} 
@@ -77,7 +75,8 @@ export default class App extends Component {
               }
             </ol>
           </main>
-      </>
+        <Navbar addItem={this.addItem}/>
+      </div>
     )
   }
 }
