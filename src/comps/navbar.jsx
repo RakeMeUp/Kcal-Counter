@@ -14,6 +14,7 @@ export default class navbar extends Component {
         this.state = {
             modalOpen: false,
             additionalOpen: false,
+            currencySelectOpen: false,
             nameInput: "",
             amountInput:"",
             kcalInput: "",
@@ -25,6 +26,7 @@ export default class navbar extends Component {
                 saltInput:"",
             }
         }
+        this.currency = this.props.currentCurrency;
     }
 
     handleSubmit=(e)=>{
@@ -34,6 +36,8 @@ export default class navbar extends Component {
             amount: this.state.amountInput,
             kcal: this.state.kcalInput,
             amountType: this.state.amountType,
+            selectedCurrency: this.state.selectedCurrency,
+            price: this.state.priceInput,
             additional: {
                 protein: this.state.additional.proteinInput,
                 carbs: this.state.additional.carbsInput,
@@ -41,23 +45,52 @@ export default class navbar extends Component {
                 salt: this.state.additional.saltInput,
             }
         });
+
+        /* RESETTING STATES, VARIABLES */
         this.setState({
             nameInput: "",
             amountInput:"",
             kcalInput: "",
             amountType: "g",
+            selectedCurrency: "HUF",
+            price: "",
             additional: {
                 proteinInput:"",
                 carbsInput:"",
                 fatInput:"",
                 saltInput:"",
             }
-        })
+        });
+        this.currency = this.props.currentCurrency
     }
 
     AddingModal = () =>{
         const scrollToBottom=()=>{
             document.querySelector("#scrollHereBaka").scrollIntoView({behavior: "smooth"})
+        }
+
+        const CurrencyList=()=>{
+            const ListItem=(props)=>{
+                return(
+                    <li onClick={()=>{this.setState({selectedCurrency: props.currency}); this.currency = props.currency}} 
+                    className='h-full text-paletteGray border-[2px] border-b-paletteLightGray w-full flex items-center justify-center'>
+                        {props.currency}
+                    </li>
+                )
+            }
+
+            return(
+                <ol onClick={()=>{this.setState({currencySelectOpen: !this.state.currencySelectOpen})}} 
+                className='absolute top-0 ml-3 w-20 inputText h-40 rounded-[15px] flex flex-col items-center'>
+                    <ListItem currency={"HUF"}/>
+                    <ListItem currency={"EUR"}/>
+                    <ListItem currency={"GBP"}/>
+                    <ListItem currency={"USD"}/>
+                    <li className='h-3/4 w-full flex items-center justify-center'>
+                        <img src={upArrow} alt="back" />
+                    </li>
+                </ol>
+            )
         }
 
         return (
@@ -113,6 +146,33 @@ export default class navbar extends Component {
                                     </div>
                                 </label>
 
+                                    {/* PRICE */}
+                                <label className='flex mb-5'>
+                                    <div className='w-full'>
+                                        <span className='ml-4 mt-2 text-lg text-paletteGray'>Price</span>
+                                        <input type="number"
+                                            className='inputText h-10 w-36'
+                                            value={this.state.priceInput}
+                                            onChange={(e)=>{this.setState({priceInput: e.target.value})}}
+                                            placeholder='E.g: 100'
+                                            required
+                                            />
+                                    </div>
+
+                                    {/* SELECT CURRENCY */}
+                                    <div className='w-full flex items-end ' > 
+                                        <div className='relative w-full h-10'>
+                                            <div onClick={()=>{this.setState({currencySelectOpen: !this.state.currencySelectOpen})}} 
+                                            className={`${this.state.currencySelectOpen ? "hidden" : "flex"} 
+                                            inputText h-10 w-20 pr-3 ml-3 items-center justify-between`}>
+                                                <span className='text-paletteGray'>{this.currency}</span>
+                                                <img src={downArrow} width={"14px"} alt="more" />
+                                            </div>
+                                            {this.state.currencySelectOpen && <CurrencyList/>}
+                                        </div>
+                                    </div>
+                                </label>
+
                                 <div className='flex items-center'>
                                     {/* KCAL/100g */}
                                     <label className='flex flex-col'>
@@ -125,6 +185,8 @@ export default class navbar extends Component {
                                                 required
                                                 />
                                     </label>
+
+                                    {/* SUBMIT BUTTON */}
                                     <button type="submit" 
                                             className='bg-paletteGreen figShadowBig 
                                             rounded-full ml-11 w-20 h-20 text-2xl 
@@ -227,7 +289,9 @@ export default class navbar extends Component {
                 {/* NAVBAR */}
                 <nav className='z-40 hidden keyboardClosed:flex justify-between sm:justify-around w-full sm:max-w-5xl h-[100px] bg-white fixed self-center bottom-0 rounded-t-[30px] drop-shadow-[0px_-2px_10px_rgba(0,0,0,0.25)]'>
                     {/* Center Button */}
-                    <button onClick={()=>{this.setState({modalOpen: !this.state.modalOpen})}} className='hover:brightness-90 left-0 right-0 mx-auto flex justify-center items-center w-[100px] h-[100px] bg-white figShadow rounded-full absolute bottom-[25px]'>
+                    <button onClick={()=>{
+                        this.setState({modalOpen: !this.state.modalOpen})
+                        }} className='hover:brightness-90 left-0 right-0 mx-auto flex justify-center items-center w-[100px] h-[100px] bg-white figShadow rounded-full absolute bottom-[25px]'>
                         <img src={plus} alt="PLUS" width="34px" />
                     </button>
 

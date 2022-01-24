@@ -11,9 +11,14 @@ export default class currencyButton extends Component {
         }
     }
 
+    handleChange=(arg)=>{
+        this.props.handleCurrencyChange(arg); 
+        this.setState({listOpen: !this.state.listOpen})
+    }
+
     ListItem=(props)=>{
         return (
-            <li onClick={()=>{this.props.handleCurrencyChange(props.currency); this.setState({listOpen: !this.state.listOpen})}} 
+            <li onClick={()=>{this.handleChange(props.currency)}} 
                 className='h-10 border-b-[1px] border-paletteLightGray mx-6 flex items-center justify-center'>
                 {props.currency}
             </li>
@@ -23,17 +28,21 @@ export default class currencyButton extends Component {
     render() {
         return (
             <>
+                {/* GREEN BUTTON */}
                 <div onClick={()=>{this.setState({modalOpen: !this.state.modalOpen})}}  className='figShadow bg-paletteGreen w-10 h-10 
                 rounded-full text-sm font-bold text-paletteBG flex items-center justify-center'>
                     <span>{this.props.currentCurrency ? this.props.currentCurrency : "HUF"}</span>
                 </div>
                 
+                {/* MODAL */}
                 {this.state.modalOpen && (
                     <div onClick={()=>{this.setState({modalOpen: !this.state.modalOpen})}} className='modal-bg z-50'>
                         <div onClick={(e)=>{e.stopPropagation()}} 
                         className='bg-paletteLightGray flex flex-col items-center modal-body w-56 pb-10'>
                             <span className='text-2xl font-medium'>Currency</span>
                             <div className='w-full h-full flex justify-center mt-5'>
+
+                                {/* LIST */}
                                 {this.state.listOpen ? (
                                         <ol className='h-48 w-32 cursor-pointer bg-white rounded-[20px] figShadow'>
                                             <this.ListItem currency={"USD"}/>

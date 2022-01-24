@@ -13,7 +13,7 @@ export default class App extends Component {
   }
 
   handleCurrencyChange=(arg)=>{
-    this.setState({actualCurrency: arg})
+    this.setState({currentCurrency: arg})
   }
 
   addItem=(item)=>{
@@ -50,7 +50,7 @@ export default class App extends Component {
               <span className='text-2xl text-paletteGray font-medium '>Food List</span>
             </div>
             <div className='absolute inset-0 flex flex-row-reverse items-center pr-4'>
-              <CurrencyButton handleCurrencyChange={this.handleCurrencyChange} currentCurrency={this.state.actualCurrency} />
+              <CurrencyButton handleCurrencyChange={this.handleCurrencyChange} currentCurrency={this.state.currentCurrency} />
             </div>
           </header>
 
@@ -75,7 +75,7 @@ export default class App extends Component {
               }
             </ol>
           </main>
-        <Navbar addItem={this.addItem}/>
+        <Navbar addItem={this.addItem} currentCurrency={this.state.currentCurrency}/>
       </div>
     )
   }
