@@ -3,13 +3,16 @@
 A dead simple Calorie calculator/food list.
 Type in the food, and it's properties, the site then rates it's price per calorie on a scale of 10.
 
-# [Live Site (Mobile version recommended(WIP))](https://fervent-swirles-43939b.netlify.app/)
+# [Live Site](https://fervent-swirles-43939b.netlify.app/)
+**(Work in Progress)**
+
+*Mobile version recommended*
 
 ## Design
 
 The Site's Goal Look as of Now
 
-![alt](https://i.imgur.com/DLdZZgf.png)
+![alt](https://i.imgur.com/T32wtOb.png)
 
 First I worked out the base look of the site, while trying new designs for each part.
 
