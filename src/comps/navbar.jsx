@@ -290,7 +290,8 @@ export default class navbar extends Component {
                 <nav className='z-40 hidden keyboardClosed:flex justify-between sm:justify-around w-full sm:max-w-5xl h-[100px] bg-white fixed self-center bottom-0 rounded-t-[30px] drop-shadow-[0px_-2px_10px_rgba(0,0,0,0.25)]'>
                     {/* Center Button */}
                     <button onClick={()=>{
-                        this.setState({modalOpen: !this.state.modalOpen})
+                        this.setState({modalOpen: !this.state.modalOpen});
+                        this.currency = this.props.currentCurrency
                         }} className='hover:brightness-90 left-0 right-0 mx-auto flex justify-center items-center w-[100px] h-[100px] bg-white figShadow rounded-full absolute bottom-[25px]'>
                         <img src={plus} alt="PLUS" width="34px" />
                     </button>
