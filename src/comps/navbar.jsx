@@ -53,7 +53,7 @@ export default class navbar extends Component {
             kcalInput: "",
             amountType: "g",
             selectedCurrency: "HUF",
-            price: "",
+            priceInput: "",
             additional: {
                 proteinInput:"",
                 carbsInput:"",
