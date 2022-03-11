@@ -3,7 +3,7 @@
 A dead simple Calorie calculator/food list.
 Type in the food, and it's properties, the site then rates it's price per calorie on a scale of 10.
 
-# [Live Site](https://fervent-swirles-43939b.netlify.app/)
+# [Live Site HERE](https://fervent-swirles-43939b.netlify.app/)
 **(Work in Progress)**
 
 *Mobile version recommended*
