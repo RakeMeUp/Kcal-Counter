@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import ListElement from "./comps/listElement.jsx";
+import ListElement from "./comps/listItem.jsx";
 import CurrencyButton from "./comps/currencyButton.jsx";
 import Navbar from "./comps/navbar";
 
@@ -7,7 +7,19 @@ export const CurrencyContext = createContext("HUF");
 
 export default function App() {
   const [currentCurrency, setCurrentCurrency] = useState("HUF");
-  const [listElements, setListElements] = useState([]);
+  const [listElements, setListElements] = useState([
+    {
+      name: "Name",
+      kpp: "N/A",
+      amount: "N/A",
+      meter: 1,
+      additional: {
+        protein: "N/A",
+        carbs: "N/A",
+        fat: "N/A",
+      },
+    },
+  ]);
 
   const handleCurrencyChange = (arg) => {
     setCurrentCurrency(arg);
@@ -19,7 +31,7 @@ export default function App() {
 
   /* making a copy of the state, and we work on that, to avoid mutating the state */
   const nameChange = (id, text) => {
-    let tempListElArray = [listElements];
+    let tempListElArray = [...listElements];
     tempListElArray[id].name = text;
     setListElements(tempListElArray);
   };
@@ -34,9 +46,8 @@ export default function App() {
     );
   };
 
-  return (
-    <div className="flex flex-col">
-      {/* Title Bar */}
+  const Header = () => {
+    return (
       <header className="relative w-full flex justify-center py-6">
         <div className="flex justify-center w-full">
           <span className="text-2xl text-paletteGray font-medium ">Food List</span>
@@ -47,7 +58,13 @@ export default function App() {
           </CurrencyContext.Provider>
         </div>
       </header>
+    );
+  };
 
+  return (
+    <div className="flex flex-col">
+      {/* Title Bar */}
+      <Header />
       {/* List elements */}
       <main id="container" className="flex flex-col md:items-center">
         <ol>

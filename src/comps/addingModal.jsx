@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, createContext, useState } from "react";
 import { ModalContext } from "./navbar";
-import { CurrencyContext } from "../newApp";
 /* COMPONENTS */
 import Input from "./Input";
 import AmountSwitch from "./amountSwitch";
@@ -10,6 +9,18 @@ import close from "../img/close.svg";
 import downArrow from "../img/downArrow.svg";
 import upArrow from "../img/upArrow.svg";
 import downArrowDouble from "../img/downArrowDouble.svg";
+
+export const itemAddedContext = createContext({
+  name: "Name",
+  kpp: "N/A",
+  amount: "N/A",
+  meter: 1,
+  additional: {
+    protein: "N/A",
+    carbs: "N/A",
+    fat: "N/A",
+  },
+});
 
 export default function AddingModal() {
   const [additionalIsOpen, setAdditionalIsOpen] = useState(false);
