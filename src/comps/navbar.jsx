@@ -8,7 +8,7 @@ import medal from "../img/medal.svg";
 export const ModalContext = createContext(false);
 
 export default function Navbar() {
-  const [addModalIsOpen, setAddModalIsOpen] = useState(true);
+  const [addModalIsOpen, setAddModalIsOpen] = useState(false);
 
   return (
     <>

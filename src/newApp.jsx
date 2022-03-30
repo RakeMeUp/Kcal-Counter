@@ -8,26 +8,10 @@ export const listOfItemsContext = createContext([]);
 
 export default function App() {
   const [currentCurrency, setCurrentCurrency] = useState("HUF");
-  const [listElements, setListElements] = useState([
-    {
-      name: "Name",
-      kpp: "N/A",
-      amount: "N/A",
-      meter: 1,
-      additional: {
-        protein: "N/A",
-        carbs: "N/A",
-        fat: "N/A",
-      },
-    },
-  ]);
+  const [listElements, setListElements] = useState([]);
 
   const handleCurrencyChange = (arg) => {
     setCurrentCurrency(arg);
-  };
-
-  const addItem = (item) => {
-    setListElements([...listElements, item]);
   };
 
   /* making a copy of the state, and we work on that, to avoid mutating the state */
@@ -78,9 +62,11 @@ export default function App() {
           )}
         </ol>
       </main>
-      <CurrencyContext.Provider value={{ currentCurrency, setCurrentCurrency }}>
-        <Navbar addItem={addItem} />
-      </CurrencyContext.Provider>
+      <listOfItemsContext.Provider value={{ listElements, setListElements }}>
+        <CurrencyContext.Provider value={{ currentCurrency, setCurrentCurrency }}>
+          <Navbar />
+        </CurrencyContext.Provider>
+      </listOfItemsContext.Provider>
     </div>
   );
 }

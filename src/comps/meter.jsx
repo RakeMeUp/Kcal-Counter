@@ -35,12 +35,8 @@ export default class meter extends Component {
   render() {
     return (
       /* METER */
-      <div className="relative outline-dotted outline-black h-[70px] w-[70px]">
-        <svg
-          id="meter"
-          className="h-[70px] w-[70px]"
-          style={this.colorChanger(this.props.meterNumber)}
-        >
+      <div className="relative h-[70px] w-[70px]">
+        <svg id="meter" className="h-[70px] w-[70px]" style={this.colorChanger(this.props.meterNumber)}>
           <circle cx="35" cy="35" r="30" strokeLinecap="round" />
         </svg>
 
@@ -49,11 +45,7 @@ export default class meter extends Component {
           <circle cx="35" cy="35" r="30" strokeLinecap="round" />
         </svg>
         {/* METER NUMBER */}
-        <div className="absolute inset-0 flex items-center justify-center text-3xl">
-          {this.props.meterNumber <= 10 && this.props.meterNumber > 0
-            ? this.props.meterNumber
-            : "Err"}
-        </div>
+        <div className="absolute inset-0 flex items-center justify-center text-3xl">{this.props.meterNumber <= 10 && this.props.meterNumber > 0 ? this.props.meterNumber : "Err"}</div>
       </div>
     );
   }
