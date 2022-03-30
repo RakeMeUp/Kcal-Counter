@@ -4,6 +4,7 @@ import CurrencyButton from "./comps/currencyButton.jsx";
 import Navbar from "./comps/navbar";
 
 export const CurrencyContext = createContext("HUF");
+export const listOfItemsContext = createContext([]);
 
 export default function App() {
   const [currentCurrency, setCurrentCurrency] = useState("HUF");
