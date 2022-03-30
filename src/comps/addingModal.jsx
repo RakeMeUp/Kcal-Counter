@@ -60,8 +60,8 @@ export default function AddingModal() {
 
 					{/* BODY */}
 					<TempItemContext.Provider value={{tempItem, setTempItem}}>
-						<form className="px-5 flex flex-col gap-3">
-							<Input title="Name of Food" required="true" />
+						<form className="px-5 flex flex-col gap-3" onSubmit={()=>{console.log(tempItem)}}>
+							<Input title="Name of Food" required={true} value="name" />
 
 							<label className="flex">
 								<Input title="Amount" width="36" />
@@ -69,13 +69,13 @@ export default function AddingModal() {
 							</label>
 
 							<label className="flex">
-								<Input title="Price" width="36" required="true" />
+								<Input title="Price" width="36" required={true} />
 								<CurrencySelectList />
 							</label>
 
 							<div className="flex">
 								{/* KCAL/100g */}
-								<Input title="Kcal/100g" width="32" required="true" />
+								<Input title="Kcal/100g" width="32" required={true} />
 
 								{/* SUBMIT BUTTON */}
 								<button type="submit" className="bg-paletteGreen ml-7 mt-2 figShadowBig rounded-full w-20 h-20 text-2xl font-medium text-white active:shadow-none active:brightness-75">

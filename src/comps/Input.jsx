@@ -10,6 +10,7 @@ export default function Input(props) {
     if (props.value === ""){
       return;
     }
+    
     setTempItem(tempItem[props.value] = e.target.value);
   }
 
