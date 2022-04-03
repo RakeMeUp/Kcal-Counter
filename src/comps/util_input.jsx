@@ -1,12 +1,23 @@
 import React, { useContext } from "react";
-import { TempItemContext } from "./addingModal";
+import { TempItemContext } from "./modal_addItem";
 
 //reset inputs with form reset
 
 export default function Input(props) {
   const { tempItem, setTempItem } = useContext(TempItemContext);
 
-  const handleInput = (e) => {
+  const debounce=(cb, delay = 1000)=>{
+    let timeout
+
+    return(...args)=>{
+      clearTimeout(timeout)
+      timeout = setTimeout(()=>{
+        cb(...args)
+      }, delay)
+    }
+  }
+
+  const changeTempItem = (e) => {
     if (props.value === "") {
       return;
     }
@@ -14,6 +25,10 @@ export default function Input(props) {
     temp[props.value] = e.target.value;
     setTempItem(temp);
   };
+
+  const handleInput=(e)=>{
+    debounce(changeTempItem(e));
+  }
 
   let width = (w) => {
     switch (w) {

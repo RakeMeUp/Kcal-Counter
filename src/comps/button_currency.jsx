@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { CurrencyContext } from "../newApp";
+import { CurrencyContext } from "../App";
 import downArrow from "../img/downArrow.svg";
 import upArrow from "../img/upArrow.svg";
 
@@ -30,30 +30,14 @@ export default function CurrencyButton() {
   return (
     <>
       {/* GREEN BUTTON */}
-      <div
-        onClick={() => {
-          setModalIsOpen(!modalIsOpen);
-        }}
-        className="figShadow bg-paletteGreen w-10 h-10 
-                rounded-full text-sm font-bold text-paletteBG flex items-center justify-center"
-      >
+      <div onClick={() => { setModalIsOpen(!modalIsOpen); }} className="figShadow cursor-pointer bg-paletteGreen w-10 h-10 rounded-full text-sm font-bold text-paletteBG flex items-center justify-center hover:brightness-90">
         <span>{currentCurrency}</span>
       </div>
 
       {/* MODAL */}
       {modalIsOpen && (
-        <div
-          onClick={() => {
-            setModalIsOpen(!modalIsOpen);
-          }}
-          className="modal-bg z-50"
-        >
-          <div
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-            className="bg-paletteLightGray flex flex-col items-center modal-body w-56 pb-10"
-          >
+        <div onClick={() => { setModalIsOpen(!modalIsOpen); }} className="modal-bg z-50">
+          <div onClick={(e) => { e.stopPropagation(); }} className="bg-paletteLightGray flex flex-col items-center modal-body w-56 pb-10">
             <span className="text-2xl font-medium">Currency</span>
             <div className="w-full h-full flex justify-center mt-5">
               {/* LIST */}

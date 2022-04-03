@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { CurrencyContext } from "../newApp";
+import { CurrencyContext } from "../App";
 import React from "react";
 
 import upArrow from "../img/upArrow.svg";
@@ -24,12 +24,7 @@ export default function CurrencySelectList() {
     };
 
     return (
-      <ol
-        onClick={() => {
-          props.handleStateChange();
-        }}
-        className="absolute top-0 ml-3 w-20 inputText h-40 rounded-[15px] flex flex-col items-center"
-      >
+      <ol onClick={() => { props.handleStateChange(); }} className="absolute top-0 ml-3 w-20 inputText h-40 rounded-[15px] flex flex-col items-center cursor-pointer ">
         <ListItem currency={"HUF"} />
         <ListItem currency={"EUR"} />
         <ListItem currency={"GBP"} />
@@ -48,7 +43,7 @@ export default function CurrencySelectList() {
           onClick={() => {
             setSelectionIsOpen(!selectionIsOpen);
           }}
-          className={`inputText h-10 w-20 pr-3 ml-3 items-center justify-between 
+          className={`inputText h-10 w-20 pr-3 ml-3 items-center justify-between cursor-pointer  
           ${selectionIsOpen ? "hidden" : "flex"}`}
         >
           <span className="text-paletteGray">{currentCurrency}</span>

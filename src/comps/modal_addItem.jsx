@@ -1,15 +1,15 @@
 import React, { useContext, createContext, useState } from "react";
 import { ModalContext } from "./navbar";
 /* COMPONENTS */
-import Input from "./Input";
-import AmountSwitch from "./amountSwitch";
-import CurrencySelectList from "./currencySelectList";
+import Input from "./util_input";
+import AmountSwitch from "./button_amountSwitch";
+import CurrencySelectList from "./util_currencySelectList";
 /* ASSETS */
 import close from "../img/close.svg";
 import downArrow from "../img/downArrow.svg";
 import upArrow from "../img/upArrow.svg";
 import downArrowDouble from "../img/downArrowDouble.svg";
-import { listOfItemsContext } from "../newApp";
+import { listOfItemsContext } from "../App";
 
 export const TempItemContext = createContext({
   name: "Name",
@@ -45,36 +45,22 @@ export default function AddingModal() {
   };
 
   const handleSubmit = () => {
-    setListElements([...listElements, tempItem]);
+    let cpy = {...tempItem};
+    setListElements([...listElements, cpy]);
   };
 
   return (
     /* MODAL BACKGROUND */
-    <div
-      onClick={() => {
-        setAddModalIsOpen(!addModalIsOpen);
-      }}
-      className="modal-bg z-50"
-    >
+    <div onClick={() => { setAddModalIsOpen(!addModalIsOpen); }} className="modal-bg z-50">
       {/* MODAL BODY */}
-      <div
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-        className="relative"
-      >
+      <div onClick={(e) => { e.stopPropagation(); }} className="relative">
         <div className={`relative modal-body pb-5 bg-white w-[300px] ${additionalIsOpen && "keyboardOpen:h-[80vh] keyboardOpen:overflow-scroll"}`}>
           {/* HEADER */}
           <header className="flex justify-between items-center pt-3 pl-5 pr-2">
             {/* TITLE */}
             <div className="text-2xl font-medium">Adding New Food</div>
             {/* CLOSE BUTTON */}
-            <button
-              onClick={() => {
-                setAddModalIsOpen(!addModalIsOpen);
-              }}
-              className="w-10 h-10 rounded-full flex justify-center items-center active:bg-paletteLightGray"
-            >
+            <button onClick={() => { setAddModalIsOpen(!addModalIsOpen); }} className="w-10 h-10 rounded-full flex justify-center items-center active:bg-paletteLightGray">
               <img src={close} alt="exit" width={"20px"} />
             </button>
           </header>
@@ -113,12 +99,7 @@ export default function AddingModal() {
               <span className="text-paletteRed text-xs">*required</span>
 
               {/* Click for More */}
-              <div
-                onClick={() => {
-                  setAdditionalIsOpen(!additionalIsOpen);
-                }}
-                className="flex items-center"
-              >
+              <div onClick={() => { setAdditionalIsOpen(!additionalIsOpen); }} className="flex items-center cursor-pointer ">
                 <img id="arrow" src={additionalIsOpen ? upArrow : downArrow} alt="asd" className="mr-2" />
                 <span className="font-light text-sm text-paletteGray">Additional Information</span>
               </div>

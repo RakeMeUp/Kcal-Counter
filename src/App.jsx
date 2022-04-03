@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 import ListElement from "./comps/listItem.jsx";
-import CurrencyButton from "./comps/currencyButton.jsx";
+import CurrencyButton from "./comps/button_currency.jsx";
 import Navbar from "./comps/navbar";
 
 export const CurrencyContext = createContext("HUF");
@@ -46,6 +46,8 @@ export default function App() {
     );
   };
 
+  
+  
   return (
     <div className="flex flex-col">
       {/* Title Bar */}

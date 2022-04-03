@@ -13,7 +13,7 @@ export default function AmountSwitch() {
   const [select, setSelect] = useState("g");
 
   return (
-    <div className="flex items-end ml-3">
+    <div className="flex items-end ml-3 cursor-pointer">
       <div
         onClick={() => {
           handleClick("g");

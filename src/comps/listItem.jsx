@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Meter from "./meter.jsx";
+import Meter from "./util_meter.jsx";
 import edit from "../img/edit.png";
 import checkmark from "../img/checkmark.svg";
 
@@ -85,14 +85,9 @@ export default function ListItem(props) {
   };
 
   return (
-    <li className="relative list-none md:max-w-xl md:w-[500px] w-full">
+    <li className="relative list-none md:max-w-xl md:w-[500px] w-full cursor-pointer">
       {/* function in class so i can toggle the corner rounding when open */}
-      <div
-        onClick={() => {
-          setListItemOpen(!listItemOpen);
-        }}
-        className={`relative rounded-[30px] ${cornerRounder()} my-2 bg-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] px-5 py-4`}
-      >
+      <div onClick={() => { setListItemOpen(!listItemOpen); }} className={`relative rounded-[30px] ${cornerRounder()} my-2 bg-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] px-5 py-4`}>
         <div className="flex w-full justify-between">
           {/* ITEM NAME */}
           <div className="flex flex-col max-w-[33%]">

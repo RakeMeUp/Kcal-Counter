@@ -1,5 +1,5 @@
 import React, { useState, createContext } from "react";
-import AddingModal from "./addingModal";
+import AddingModal from "./modal_addItem";
 
 import plus from "../img/plus.svg";
 import person from "../img/person.svg";
