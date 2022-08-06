@@ -1,4 +1,5 @@
 ### This is an abandoned project, i might come back to it sometime
+---
 
 ![alt](https://img.shields.io/badge/Built%20in-React%20and%20Tailwind-blue) ![alt](https://img.shields.io/badge/Designed%20in-Figma-purple) ![alt](https://img.shields.io/badge/Planned%20with-Trello-lightblue) ![alt](https://img.shields.io/badge/Hosted%20on-Netlify-darkgreen)
 
